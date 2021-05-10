@@ -1,0 +1,27 @@
+<section class="bg">
+  <div class="content">
+    <div class="header-icon" style="color: white;font-size: 44px;">Sign In</div>
+    <div class="form-content">
+      <h1>Create your account</h1>
+      <div class="form">
+        <div class="form-list">
+          <input id="email" type="text" placeholder="Enter Your email" [(ngModel)]="userEmail"  (ngModelChange)="checkUser()"
+                 autocomplete="off" style="border-color: rgba(51,75,250,0.25)">
+          <p class="error-message" *ngIf="emailDoesNotExists">Email does not exists</p>
+        </div>
+        <div class="form-list">
+          <input id="password" type="text" placeholder="Enter Your Password" [(ngModel)]="password" autocomplete="off" style="border-color: rgba(51,75,250,0.25)">
+        </div>
+        <div class="submit-btn">
+          <button (click)="login()" [disabled]="userEmail == '' || password == '' || emailDoesNotExists">Continue</button>
+          <p class="error-message" *ngIf="!passwordMatch">Password doesn't match</p>
+        </div>
+        <p class="tip signup-tip">
+          <span>Don't Have an account ?</span>
+          <a [href]="'sign-in'">Sign Up</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+</section>

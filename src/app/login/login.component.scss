@@ -1,0 +1,116 @@
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  min-height: 100vh;
+  padding-bottom: 100px;
+  box-sizing: border-box;
+  .content {
+    width: 420px;
+    margin: 16vh auto 0;
+    .header-icon {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .form-content {
+      width: 420px;
+      box-sizing: border-box;
+      padding: 40px 40px 48px;
+      background-color: #FFF;
+      position: relative;
+      border-radius: 9px;
+      .submit-btn {
+        margin-top: 16px;
+        [disabled] {
+          cursor: no-drop;
+          background-color: #cccccc !important;
+        }
+      }
+      .submit-btn button {
+        background-color: #334bfa;
+        color: #FFF;
+        font-size: 16px;
+        height: 44px;
+        width: 100%;
+        display: block;
+        border-radius: 7px;
+      }
+      .error-message {
+        font-size: 12px;
+        color: #FE4066;
+        margin-top: 3px;
+      }
+      .form {
+        margin-top: 20px;
+      }
+      .form-list {
+        margin-top: 24px;
+        input {
+          width: 100%;
+          margin: 0;
+          padding: 0 0 0 6px;
+          height: 40px;
+          border: 1px solid #E9E9E9;
+          box-sizing: border-box;
+          border-radius: 4px;
+          font-size: 16px;
+        }
+      }
+      .tip {
+        font-size: 12px;
+        user-select: none;
+        a {
+          color: #334bfa;
+          vertical-align: middle;
+        }
+        .signup-tip, .form-content .tip.signin-tip {
+          text-align: center;
+          margin-top: 20px;
+        }
+        span {
+          vertical-align: middle;
+          cursor: default;
+        }
+        .span.icon {
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          border: 1px solid #ccc;
+          display: inline-block;
+        }
+        span:last-of-type {
+          padding-left: 2px;
+        }
+        .tip-signup {
+          padding-left: 20px;
+          position: relative;
+          .icon-font {
+            position: absolute;
+            left: 0;
+            top: -1px;
+          }
+        }
+      }
+    }
+  }
+}
+input {
+  color: #353030;
+  box-shadow: none !important;
+  outline: 0 !important;
+  border: 0;
+}
+button {
+  outline: none;
+  border: none;
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+

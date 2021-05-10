@@ -1,0 +1,38 @@
+<section class="bg">
+  <div class="content">
+    <div class="header-icon" style="color: white;    font-size: 44px;">Sign Up</div>
+    <div class="form-content">
+      <h1>Create your account</h1>
+      <div class="form">
+        <div class="form-list">
+          <input id="email" type="text" placeholder="Enter Your email" [(ngModel)]="userEmail" (ngModelChange)="checkUser()"
+                 autocomplete="off" style="border-color: rgba(51,75,250,0.25)">
+          <p class="error-message" *ngIf="emailDoesNotExists">Email exists already</p>
+          <p class="error-message" *ngIf="validEmail">Please enter valid email</p>
+        </div>
+        <div class="form-list">
+          <input id="password" type="text" placeholder="Enter Your Password" [(ngModel)]="password" [disabled]="validEmail || userEmail === ''" autocomplete="off" style="border-color: rgba(51,75,250,0.25)">
+        </div>
+        <div class="form-list">
+          <input id="confirm-password" type="text" placeholder="Confirm Your Password" [disabled]="validEmail || userEmail === ''" (ngModelChange)="checkPassword()"
+                 [(ngModel)]="confirmPassword" autocomplete="off" style="border-color: rgba(51,75,250,0.25)">
+          <p class="error-message" *ngIf="!passwordMatch">Password does not match</p>
+        </div>
+        <p class="tip tip-signup">
+          <span class="icon icon-font"></span>
+          <span>By signing up I agree <a>Terms of Services</a></span>
+        </p>
+        <div class="submit-btn">
+          <button (click)="addUser()"
+            [disabled]="userEmail == '' || password == '' || confirmPassword == '' || emailDoesNotExists || validEmail || !passwordMatch">Continue</button>
+        </div>
+        <p class="tip signup-tip">
+          <span>Already Have an account ?</span>
+          <a [href]="'login'">Sign In</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+</section>
+

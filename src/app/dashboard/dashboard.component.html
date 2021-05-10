@@ -1,0 +1,128 @@
+<div class="dashboard">
+  <div class="sidebar">
+    <div class="fixed-section">
+      <div class="top-controls">
+        <!--        <img style="background: #181818" src="assets/icons/home.svg" alt="" />-->
+      </div>
+      <div class="bottom-controls" (click)="logOut()">
+        <img src="assets/icons/logOut.svg" alt="" />
+      </div>
+    </div>
+    <div class="drawer-section">
+      <div class="section-header">Revaa</div>
+      <div class="search-box">
+        <input
+          type="text"
+          [(ngModel)]="searchString"
+          placeholder="Search for a item or a product"
+        />
+      </div>
+      <div class="products">
+        <p class="product-header">PRODUCTS</p>
+        <div
+          class="no-products"
+          *ngIf="
+            products.length == 0 ||
+            (products | filter: searchString).length == 0
+          "
+        >
+          No products available
+        </div>
+        <div
+          class="product"
+          (click)="scrollToView(product.id)"
+          tabindex="0"
+          *ngFor="let product of products | filter: searchString"
+        >
+          <ngx-emoji
+            [emoji]="product.icon"
+            set="twitter"
+            size="18"
+            sheetSize="32"
+          ></ngx-emoji>
+          <div class="product-name">{{ product.name }}</div>
+        </div>
+      </div>
+      <div class="add-product">
+        <button
+          type="button"
+          class="button-block-fill"
+          (click)="toggleproductPopup(false, 'product')"
+        >
+          <img src="assets/icons/add.svg" alt="" />
+          Add a product
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="content-area">
+    <!--<div class="action-pannel">
+      <div class="dropdown">
+        <img class="list" src="assets/icons/list.svg" alt="" />
+        <img src="assets/icons/down-arrow.svg" alt="" />
+      </div>
+
+      <img src="assets/icons/actions.svg" alt="" />
+    </div>
+    <div class="line-hr"></div>-->
+    <div class="product-container">
+      <div
+        class="product-content"
+        [id]="product.id"
+        *ngFor="let product of products; let i = index"
+      >
+        <div class="product-header">
+          <ngx-emoji
+            [emoji]="product.icon"
+            set="twitter"
+            size="30"
+            sheetSize="32"
+          ></ngx-emoji>
+          <p>{{ product.name }}</p>
+          <img src="assets/icons/down-arrow.svg" alt="" />
+        </div>
+        <div
+          class="items"
+          (resized)="setItemDisplay(product, i)"
+          #itemsContainerRef
+        >
+          <div class="item" *ngFor="let item of product.items">
+            <div
+              class="dot"
+              [ngStyle]="{ 'background-color': item.color }"
+            ></div>
+            <div
+              class="item-emoji"
+              [ngStyle]="{ border: '2px solid ' + item.color }"
+            >
+              <ngx-emoji
+                [emoji]="item.icon"
+                set="twitter"
+                size="30"
+                sheetSize="32"
+              ></ngx-emoji>
+            </div>
+            <div class="item-name">{{ item.name }}</div>
+          </div>
+          <div class="add-item">
+            <button
+              type="button"
+              class="button-sq-outline"
+              (click)="toggleproductPopup(false, 'item', product.id)"
+            >
+              <div class="tooltip">Add a new item</div>
+              <img class="dark" src="assets/icons/add-dark.svg" alt="" />
+              <img class="blue" src="assets/icons/add-blue.svg" alt="" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-add-product
+  *ngIf="popupToggle" (clickOutside)="closeModal()"
+  [type]="popupType"
+  class="popup"
+  (value)="toggleproductPopup($event)"
+></app-add-product>
